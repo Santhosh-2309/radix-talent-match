@@ -18,6 +18,7 @@ function ResumeParsing() {
     });
     const data = await res.json();
     setResult(data);
+    localStorage.setItem('parsed_resume_result', JSON.stringify(data));
     setLoading(false);
   };
 

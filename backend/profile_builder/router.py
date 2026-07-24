@@ -21,6 +21,21 @@ def create_or_update_profile(profile: CandidateProfile = Body(...)):
     save_profile(profile, filepath)
     return profile
 
+@router.get("/list")
+def list_profiles():
+    if not os.path.exists(PROFILES_DIR):
+        return []
+    emails = []
+    for f in os.listdir(PROFILES_DIR):
+        if f.endswith(".json"):
+            try:
+                prof = load_profile(os.path.join(PROFILES_DIR, f))
+                if prof.email:
+                    emails.append(prof.email)
+            except Exception:
+                pass
+    return sorted(list(set(emails)))
+
 @router.get("/{email}", response_model=CandidateProfile)
 def get_profile(email: str):
     filepath = get_profile_path(email)

@@ -27,3 +27,10 @@ async def analyze_jd(file: UploadFile = File(...), company: str = Form("Unknown"
         f.write(result.model_dump_json())
         
     return result
+
+@router.get("/list")
+def list_jds():
+    if not os.path.exists(EXTRACTED_JDS_DIR):
+        return []
+    files = [f.replace(".json", "") for f in os.listdir(EXTRACTED_JDS_DIR) if f.endswith(".json")]
+    return sorted(files)

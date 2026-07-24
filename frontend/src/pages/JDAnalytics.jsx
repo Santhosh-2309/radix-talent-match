@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 
 function JDAnalytics() {
   const [file, setFile] = useState(null);
-  const [company, setCompany] = useState('Unknown');
-  const [role, setRole] = useState('Unknown');
+  const [company, setCompany] = useState('');
+  const [role, setRole] = useState('');
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -13,8 +13,8 @@ function JDAnalytics() {
     setLoading(true);
     const formData = new FormData();
     formData.append('file', file);
-    formData.append('company', company);
-    formData.append('role', role);
+    formData.append('company', company || 'Unknown');
+    formData.append('role', role || 'Unknown');
 
     const res = await fetch('http://localhost:8000/api/jd/analyze-jd', {
       method: 'POST',
@@ -27,10 +27,11 @@ function JDAnalytics() {
 
   return (
     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
+      <span className="label-muted">Diagnostic Readout</span>
       <h2>JD Analytics</h2>
       <div className="panel">
         <input type="text" placeholder="Company Name" value={company} onChange={(e) => setCompany(e.target.value)} />
-        <input type="text" placeholder="Role" value={role} onChange={(e) => setRole(e.target.value)} />
+        <input type="text" placeholder="Role Title" value={role} onChange={(e) => setRole(e.target.value)} />
         <input 
           type="file" 
           accept=".pdf,.docx" 

@@ -37,9 +37,8 @@ function App() {
       <div>
         <nav className="nav-container">
           <div className="nav-logo-wrapper">
-            <div className="nav-logo-dot"></div>
             <motion.div custom={0} initial="hidden" animate="visible" variants={navVariants}>
-              <Link to="/" className="nav-logo">RADIX</Link>
+              <Link to="/" className="nav-logo">[RADIX]</Link>
             </motion.div>
           </div>
           <div className="nav-links">

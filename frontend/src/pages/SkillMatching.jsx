@@ -41,18 +41,35 @@ function ScoreRing({ targetScore }) {
 
 function SkillMatching() {
   const [email, setEmail] = useState('');
-  const [jdId, setJdId] = useState('Google LLC - Software Engineer');
+  const [jdId, setJdId] = useState('');
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  
+  const [profiles, setProfiles] = useState([]);
+  const [jds, setJds] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:8000/api/profile/list')
+      .then(res => res.json())
+      .then(data => {
+        setProfiles(data);
+        if (data.length > 0) setEmail(data[0]);
+      })
+      .catch(e => console.error(e));
+      
+    fetch('http://localhost:8000/api/jd/list')
+      .then(res => res.json())
+      .then(data => {
+        setJds(data);
+        if (data.length > 0) setJdId(data[0]);
+      })
+      .catch(e => console.error(e));
+  }, []);
 
   const handleRunMatch = async () => {
-    if (!email) {
-      setError('Please enter candidate email.');
-      return;
-    }
-    if (!jdId) {
-      setError('Please enter JD identifier.');
+    if (!email || !jdId) {
+      setError('Please select a candidate email and JD.');
       return;
     }
     setLoading(true);
@@ -75,26 +92,38 @@ function SkillMatching() {
     setLoading(false);
   };
 
+  if (profiles.length === 0 || jds.length === 0) {
+    return (
+      <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="panel">
+        <span className="label-muted">Diagnostic Readout</span>
+        <h2>Skill Matching</h2>
+        <p style={{ color: 'var(--accent-coral)' }}>
+          {profiles.length === 0 ? "No profiles found — build one first in Profile Builder." : "No extracted JDs found — analyze a JD first."}
+        </p>
+      </motion.div>
+    );
+  }
+
   return (
     <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="panel">
       <span className="label-muted">Diagnostic Readout</span>
       <h2>Skill Matching</h2>
       
       <div style={{ display: 'flex', gap: '1rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
-        <input 
-          type="email" 
-          placeholder="Candidate Email (e.g. karthik@example.com)" 
+        <select 
           value={email} 
           onChange={(e) => setEmail(e.target.value)} 
           style={{ flex: 1, minWidth: '250px' }}
-        />
-        <input 
-          type="text" 
-          placeholder="JD Name (e.g. Google LLC - Software Engineer)" 
+        >
+          {profiles.map(p => <option key={p} value={p}>{p}</option>)}
+        </select>
+        <select 
           value={jdId} 
           onChange={(e) => setJdId(e.target.value)} 
           style={{ flex: 1, minWidth: '250px' }}
-        />
+        >
+          {jds.map(j => <option key={j} value={j}>{j.replace(/_/g, ' ')}</option>)}
+        </select>
       </div>
       
       <button onClick={handleRunMatch} disabled={loading}>
@@ -115,6 +144,7 @@ function SkillMatching() {
                 {result.matching_skills.map((skillObj, idx) => (
                   <span key={`match-${idx}`} className="pill pill-matched">
                     {skillObj.skill_name}
+                    <small style={{ opacity: 0.6, marginLeft: '4px', fontSize: '0.7em' }}>({skillObj.match_type})</small>
                   </span>
                 ))}
                 {result.matching_skills.length === 0 && <span className="label-muted">None</span>}

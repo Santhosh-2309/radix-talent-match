@@ -1,48 +1,60 @@
 {
-  "name": "",
+  "name": "Karthik Subramaniam",
   "email": "karthik@example.com",
   "education": "",
   "skills": [
     {
       "skill_name": "SQL",
       "category_code": "SQL",
-      "evidence": null,
+      "evidence": "SQL, Python (pandas, scikit-learn), Power BI, Statistics, A/B testing basics, Excel, basic Java",
       "confidence": "high"
     },
     {
       "skill_name": "Python",
       "category_code": "COD",
-      "evidence": null,
+      "evidence": "SQL, Python (pandas, scikit-learn), Power BI, Statistics, A/B testing basics, Excel, basic Java",
       "confidence": "high"
     },
     {
       "skill_name": "Data Analysis",
-      "category_code": "SWE",
-      "evidence": null,
+      "category_code": "DSA",
+      "evidence": "Built an end-to-end churn-prediction pipeline (SQL extraction ΓåÆ feature engineering ΓåÆ logistic regression model) on a public e-commerce dataset",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "Data Visualization",
+      "category_code": "OTHER",
+      "evidence": "Runner-up, inter-college data visualization competition",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "Statistics",
+      "category_code": "DSA",
+      "evidence": "SQL, Python (pandas, scikit-learn), Power BI, Statistics, A/B testing basics, Excel, basic Java",
       "confidence": "high"
     },
     {
       "skill_name": "A/B Testing",
-      "category_code": "SWE",
-      "evidence": null,
-      "confidence": "medium"
+      "category_code": "APTI",
+      "evidence": "Ran and analyzed an A/B test simulation comparing two onboarding flows, presenting results to a non-technical audience",
+      "confidence": "high"
     },
     {
       "skill_name": "Communication",
       "category_code": "COMM",
-      "evidence": null,
+      "evidence": "Ran and analyzed an A/B test simulation comparing two onboarding flows, presenting results to a non-technical audience",
       "confidence": "high"
     },
     {
-      "skill_name": "Machine Learning",
-      "category_code": "AI",
-      "evidence": null,
-      "confidence": "medium"
+      "skill_name": "Data Pipeline",
+      "category_code": "SWE",
+      "evidence": "Built an end-to-end churn-prediction pipeline (SQL extraction ΓåÆ feature engineering ΓåÆ logistic regression model) on a public e-commerce dataset",
+      "confidence": "high"
     },
     {
-      "skill_name": "AWS",
-      "category_code": "CLOUD",
-      "evidence": null,
+      "skill_name": "Java",
+      "category_code": "COD",
+      "evidence": "SQL, Python (pandas, scikit-learn), Power BI, Statistics, A/B testing basics, Excel, basic Java",
       "confidence": "low"
     }
   ],
@@ -50,5 +62,5 @@
   "internships": [],
   "certifications": [],
   "preferred_roles": [],
-  "cv_file": ""
+  "cv_file": "Karthik Subramaniam.pdf"
 }
