@@ -2,11 +2,13 @@ from typing import List, Optional
 from pydantic import BaseModel
 
 class Skill(BaseModel):
-    name: str
-    category: Optional[str] = None
-    confidence: Optional[float] = None
+    skill_name: str
+    category_code: Optional[str] = None
+    evidence: Optional[str] = None
+    confidence: Optional[str] = None
 
 class ExtractedSkillList(BaseModel):
+    source_type: Optional[str] = None
     skills: List[Skill]
 
 class CandidateProfile(BaseModel):

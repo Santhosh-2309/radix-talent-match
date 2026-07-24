@@ -1,12 +1,15 @@
-from fastapi import APIRouter
-from shared.schema import ResumeInput, ExtractedSkillList, Skill
-from shared.llm_client import llm_client
+from fastapi import APIRouter, UploadFile, File
+from shared.schema import ExtractedSkillList
+from shared.extract_text import extract_text_from_bytes
+from .extract_skills import extract_skills_from_resume
 
 router = APIRouter()
 
 @router.post("/parse-resume", response_model=ExtractedSkillList)
-def parse_resume(data: ResumeInput):
-    # STUB implementation
-    res = llm_client.extract_resume_skills(data.resume_text)
-    skills = [Skill(**s) for s in res["skills"]]
-    return ExtractedSkillList(skills=skills)
+async def parse_resume(file: UploadFile = File(...)):
+    content = await file.read()
+    text = extract_text_from_bytes(content, file.filename)
+    if not text:
+        return ExtractedSkillList(source_type="resume", skills=[])
+        
+    return extract_skills_from_resume(text, file.filename)

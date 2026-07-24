@@ -1,12 +1,15 @@
-from fastapi import APIRouter
-from shared.schema import JDInput, ExtractedSkillList, Skill
-from shared.llm_client import llm_client
+from fastapi import APIRouter, UploadFile, File, Form
+from shared.schema import ExtractedSkillList
+from shared.extract_text import extract_text_from_bytes
+from .extract_skills import extract_skills_from_jd
 
 router = APIRouter()
 
 @router.post("/analyze-jd", response_model=ExtractedSkillList)
-def analyze_jd(data: JDInput):
-    # STUB implementation
-    res = llm_client.extract_jd_skills(data.jd_text)
-    skills = [Skill(**s) for s in res["skills"]]
-    return ExtractedSkillList(skills=skills)
+async def analyze_jd(file: UploadFile = File(...), company: str = Form("Unknown"), role: str = Form("Unknown")):
+    content = await file.read()
+    text = extract_text_from_bytes(content, file.filename)
+    if not text:
+        return ExtractedSkillList(source_type="jd", skills=[])
+        
+    return extract_skills_from_jd(text, file.filename, company, role)

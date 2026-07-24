@@ -1,39 +1,34 @@
 import os
-from typing import Any
+from pathlib import Path
+from dotenv import load_dotenv
+from openai import OpenAI
 
-class GroqStubClient:
+env_path = Path(__file__).resolve().parent.parent.parent / ".env"
+load_dotenv(dotenv_path=env_path)
+
+class GroqLLMClient:
     def __init__(self):
-        self.api_key = os.getenv("GROQ_API_KEY", "dummy_key")
+        self.api_key = os.getenv("GROQ_API_KEY", "")
+        self.client = OpenAI(
+            api_key=self.api_key,
+            base_url="https://api.groq.com/openai/v1",
+        )
+        self.model = "llama-3.3-70b-versatile"
 
-    def extract_jd_skills(self, jd_text: str) -> Any:
-        return {
-            "skills": [
-                {"name": "Python", "category": "Programming", "confidence": 0.9},
-                {"name": "React", "category": "Frontend", "confidence": 0.85}
-            ]
-        }
+    def call_llm(self, system_prompt: str, user_prompt: str) -> str:
+        try:
+            response = self.client.chat.completions.create(
+                model=self.model,
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_prompt},
+                ],
+                response_format={"type": "json_object"},
+                temperature=0.0
+            )
+            return response.choices[0].message.content
+        except Exception as e:
+            print(f"LLM Error: {e}")
+            raise e
 
-    def extract_resume_skills(self, resume_text: str) -> Any:
-        return {
-            "skills": [
-                {"name": "Python", "category": "Programming", "confidence": 0.95},
-                {"name": "Java", "category": "Programming", "confidence": 0.8}
-            ]
-        }
-
-    def run_talent_check(self, profile: dict, company: str) -> Any:
-        return {
-            "score": 85.0,
-            "feedback": f"Strong fit for {company}",
-            "passed": True
-        }
-
-    def run_skill_match(self, profile: dict, jd: dict) -> Any:
-        return {
-            "overall_score": 90.0,
-            "matching_skills": ["Python"],
-            "missing_skills": ["React"],
-            "gap_analysis": "Missing frontend experience."
-        }
-
-llm_client = GroqStubClient()
+llm_client = GroqLLMClient()
