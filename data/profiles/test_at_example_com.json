@@ -1,0 +1,14 @@
+{
+  "name": "John Doe",
+  "email": "test@example.com",
+  "education": "BSc CS",
+  "skills": [],
+  "hackathons": [
+    "HackMIT",
+    "Global Hack"
+  ],
+  "internships": [],
+  "certifications": [],
+  "preferred_roles": [],
+  "cv_file": ""
+}
