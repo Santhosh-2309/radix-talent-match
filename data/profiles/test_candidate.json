@@ -1,0 +1,79 @@
+{
+  "id": "test-001",
+  "name": "Test Candidate",
+  "skills": [
+    {
+      "skill_name": "Binary Search",
+      "category_code": "DSA",
+      "evidence": "Solved 200+ LC",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "Python",
+      "category_code": "COD",
+      "evidence": "3 years experience",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "Design Patterns",
+      "category_code": "OOD",
+      "evidence": "Used MVC, Singleton",
+      "confidence": "medium"
+    },
+    {
+      "skill_name": "Verbal Reasoning",
+      "category_code": "APTI",
+      "evidence": "GRE score",
+      "confidence": "medium"
+    },
+    {
+      "skill_name": "Technical Writing",
+      "category_code": "COMM",
+      "evidence": "Blog posts",
+      "confidence": "low"
+    },
+    {
+      "skill_name": "PyTorch",
+      "category_code": "AI",
+      "evidence": "Built CNN models",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "AWS EC2",
+      "category_code": "CLOUD",
+      "evidence": "Deployed apps",
+      "confidence": "medium"
+    },
+    {
+      "skill_name": "PostgreSQL",
+      "category_code": "SQL",
+      "evidence": "Designed schemas",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "Git Workflows",
+      "category_code": "SWE",
+      "evidence": "CI/CD pipelines",
+      "confidence": "medium"
+    },
+    {
+      "skill_name": "Load Balancing",
+      "category_code": "SYSD",
+      "evidence": "Nginx configs",
+      "confidence": "low"
+    },
+    {
+      "skill_name": "TCP/IP",
+      "category_code": "NETW",
+      "evidence": "Socket programming",
+      "confidence": "medium"
+    },
+    {
+      "skill_name": "Linux Admin",
+      "category_code": "OS",
+      "evidence": "Ubuntu server mgmt",
+      "confidence": "high"
+    }
+  ],
+  "experience_years": 3
+}

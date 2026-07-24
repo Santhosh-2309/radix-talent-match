@@ -1,0 +1,66 @@
+{
+  "source_type": "jd",
+  "skills": [
+    {
+      "skill_name": "Python",
+      "category_code": "COD",
+      "evidence": "Required: Python 3+",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "PyTorch",
+      "category_code": "AI",
+      "evidence": "Deep learning frameworks",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "AWS EC2",
+      "category_code": "CLOUD",
+      "evidence": "Cloud deployment",
+      "confidence": "medium"
+    },
+    {
+      "skill_name": "PostgreSQL",
+      "category_code": "SQL",
+      "evidence": "Database design",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "Kubernetes",
+      "category_code": "CLOUD",
+      "evidence": "Container orchestration",
+      "confidence": "medium"
+    },
+    {
+      "skill_name": "GraphQL",
+      "category_code": "SWE",
+      "evidence": "API design",
+      "confidence": "medium"
+    },
+    {
+      "skill_name": "System Design",
+      "category_code": "SYSD",
+      "evidence": "Large-scale systems",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "Docker",
+      "category_code": "SWE",
+      "evidence": "Containerization",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "React",
+      "category_code": "COD",
+      "evidence": "Frontend development",
+      "confidence": "medium"
+    },
+    {
+      "skill_name": "Communication Skills",
+      "category_code": "COMM",
+      "evidence": "Team collaboration",
+      "confidence": "medium"
+    }
+  ],
+  "source_file": "Google LLC - Software Engineer.pdf"
+}
