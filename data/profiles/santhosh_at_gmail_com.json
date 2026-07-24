@@ -1,20 +1,112 @@
 {
-  "name": "Santhosh",
+  "name": "Santhosh. V",
   "email": "santhosh@gmail.com",
-  "education": "Btech cse ",
-  "skills": [],
+  "education": "B tech CSE",
+  "skills": [
+    {
+      "skill_name": "Data Structures",
+      "category_code": "DSA",
+      "evidence": "strengthening data structures and algorithms for placement readiness",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "Java",
+      "category_code": "COD",
+      "evidence": "Built a solo Library Management System in Java",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "Object-Oriented Programming",
+      "category_code": "OOD",
+      "evidence": "Built a full-stack platform (FastAPI, Next.js 15, Supabase/pgvector, Groq) that automates literature review, novelty checking, and IEEE/Scopus-format paper drafting",
+      "confidence": "medium"
+    },
+    {
+      "skill_name": "Aptitude",
+      "category_code": "APTI",
+      "evidence": "CGPA 8.49",
+      "confidence": "medium"
+    },
+    {
+      "skill_name": "Communication",
+      "category_code": "COMM",
+      "evidence": "Research Paper Maker: End-to-End Academic Writing Automation Platform Full-Stack Project",
+      "confidence": "medium"
+    },
+    {
+      "skill_name": "Machine Learning",
+      "category_code": "AI",
+      "evidence": "Built a Hidden Markov Model (5 hidden states, Viterbi decoding) to detect drift in multi-agent LLM workflows",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "Cloud Computing",
+      "category_code": "CLOUD",
+      "evidence": "DevOps & Cloud: Docker, Kubernetes, Jenkins, Ansible, Terraform (project-based, self-taught)",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "SQL",
+      "category_code": "SQL",
+      "evidence": "Languages: Java, SQL; basic familiarity with Python",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "Software Engineering",
+      "category_code": "SWE",
+      "evidence": "Built a full-stack platform (FastAPI, Next.js 15, Supabase/pgvector, Groq) that automates literature review, novelty checking, and IEEE/Scopus-format paper drafting",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "System Design",
+      "category_code": "SYSD",
+      "evidence": "Designed a compliance score blending a non-drift ratio with normalized log-likelihood for real-time scoring",
+      "confidence": "medium"
+    },
+    {
+      "skill_name": "Networking",
+      "category_code": "NETW",
+      "evidence": "VPC-Stream: Cloud-Native Network Anomaly Detection Platform DevOps Project",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "Operating System",
+      "category_code": "OS",
+      "evidence": "Docker, Kubernetes, Jenkins, Ansible, Terraform (project-based, self-taught)",
+      "confidence": "medium"
+    },
+    {
+      "skill_name": "Distributed Systems",
+      "category_code": "OTHER",
+      "evidence": "Core CS: Distributed Systems, Cryptography, Machine Learning, NLP",
+      "confidence": "medium"
+    },
+    {
+      "skill_name": "Cryptography",
+      "category_code": "OTHER",
+      "evidence": "Core CS: Distributed Systems, Cryptography, Machine Learning, NLP",
+      "confidence": "medium"
+    },
+    {
+      "skill_name": "Natural Language Processing",
+      "category_code": "OTHER",
+      "evidence": "Core CS: Distributed Systems, Cryptography, Machine Learning, NLP",
+      "confidence": "medium"
+    }
+  ],
   "hackathons": [
     "SIH",
     "google sprint"
   ],
   "internships": [
-    "NCS partners"
+    "Ncs Partners",
+    "JAVA and SQL"
   ],
   "certifications": [
-    "Azure Data Fudamentals"
+    "google cloud"
   ],
   "preferred_roles": [
-    "SOftware engineer"
+    "software engineer"
   ],
-  "cv_file": ""
+  "cv_file": "Santhosh Resume (3).pdf"
 }

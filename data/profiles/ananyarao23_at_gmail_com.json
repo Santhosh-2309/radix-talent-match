@@ -1,0 +1,93 @@
+{
+  "name": "Ananya Rao",
+  "email": "ananyarao23@gmail.com",
+  "education": "B tech CSE",
+  "skills": [
+    {
+      "skill_name": "Data Structures & Algorithms",
+      "category_code": "DSA",
+      "evidence": "Technical Skills: Data Structures & Algorithms, Solved 350+ problems on competitive programming platforms",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "C++",
+      "category_code": "COD",
+      "evidence": "Technical Skills: C++, Implemented a multithreaded job scheduler in C++",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "Python",
+      "category_code": "COD",
+      "evidence": "Technical Skills: Python",
+      "confidence": "medium"
+    },
+    {
+      "skill_name": "Java",
+      "category_code": "COD",
+      "evidence": "Technical Skills: Java, Designed a parking-lot management system in Java",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "Object-Oriented Design",
+      "category_code": "OOD",
+      "evidence": "Technical Skills: Object-Oriented Design, Designed a parking-lot management system in Java using OOP design patterns",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "System Design",
+      "category_code": "SYSD",
+      "evidence": "Built a distributed URL-shortening service with a Redis-backed cache and a horizontally-scalable API layer",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "Operating Systems",
+      "category_code": "OS",
+      "evidence": "Technical Skills: Operating Systems, Implemented a multithreaded job scheduler in C++ simulating OS-level process scheduling algorithms",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "Computer Networks",
+      "category_code": "NETW",
+      "evidence": "Technical Skills: Computer Networks",
+      "confidence": "medium"
+    },
+    {
+      "skill_name": "Git",
+      "category_code": "OTHER",
+      "evidence": "Technical Skills: Git",
+      "confidence": "medium"
+    },
+    {
+      "skill_name": "Linux",
+      "category_code": "OTHER",
+      "evidence": "Technical Skills: Linux",
+      "confidence": "medium"
+    },
+    {
+      "skill_name": "Communication",
+      "category_code": "COMM",
+      "evidence": "mentors juniors on DSA through the college coding club",
+      "confidence": "medium"
+    },
+    {
+      "skill_name": "Software Engineering",
+      "category_code": "SWE",
+      "evidence": "Preferred Roles: Software Engineer, Backend Engineer",
+      "confidence": "high"
+    }
+  ],
+  "hackathons": [
+    "SIH",
+    "google sprint"
+  ],
+  "internships": [
+    "NCS Partners"
+  ],
+  "certifications": [
+    "AZure data fundamentals"
+  ],
+  "preferred_roles": [
+    "software engineer"
+  ],
+  "cv_file": "Ananya Rao.docx"
+}
