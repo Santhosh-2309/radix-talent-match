@@ -1,11 +1,24 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 from shared.schema import TalentCheckInput, TalentCheckResult
-from shared.llm_client import llm_client
+from profile_builder.storage import load_profile
+from .company_data import load_company_skillsets
+from .scoring import calculate_readiness
+import os
 
 router = APIRouter()
 
 @router.post("/check-talent", response_model=TalentCheckResult)
 def check_talent(data: TalentCheckInput):
-    # STUB implementation
-    res = llm_client.run_talent_check({"id": data.profile_id}, data.company_name)
+    # data.profile_id is actually the email in our implementation
+    email = data.profile_id
+    filepath = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "data", "profiles", f"{email.replace('@', '_at_').replace('.', '_')}.json")
+    
+    try:
+        profile = load_profile(filepath)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail="Profile not found.")
+        
+    required_skillsets = load_company_skillsets(data.company_name)
+    
+    res = calculate_readiness(profile, data.company_name, required_skillsets)
     return TalentCheckResult(**res)

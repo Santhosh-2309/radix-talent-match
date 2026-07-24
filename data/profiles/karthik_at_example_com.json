@@ -1,0 +1,54 @@
+{
+  "name": "",
+  "email": "karthik@example.com",
+  "education": "",
+  "skills": [
+    {
+      "skill_name": "SQL",
+      "category_code": "SQL",
+      "evidence": null,
+      "confidence": "high"
+    },
+    {
+      "skill_name": "Python",
+      "category_code": "COD",
+      "evidence": null,
+      "confidence": "high"
+    },
+    {
+      "skill_name": "Data Analysis",
+      "category_code": "SWE",
+      "evidence": null,
+      "confidence": "high"
+    },
+    {
+      "skill_name": "A/B Testing",
+      "category_code": "SWE",
+      "evidence": null,
+      "confidence": "medium"
+    },
+    {
+      "skill_name": "Communication",
+      "category_code": "COMM",
+      "evidence": null,
+      "confidence": "high"
+    },
+    {
+      "skill_name": "Machine Learning",
+      "category_code": "AI",
+      "evidence": null,
+      "confidence": "medium"
+    },
+    {
+      "skill_name": "AWS",
+      "category_code": "CLOUD",
+      "evidence": null,
+      "confidence": "low"
+    }
+  ],
+  "hackathons": [],
+  "internships": [],
+  "certifications": [],
+  "preferred_roles": [],
+  "cv_file": ""
+}

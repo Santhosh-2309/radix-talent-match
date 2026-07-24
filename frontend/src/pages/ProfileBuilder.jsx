@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 function ProfileBuilder() {
   const [profile, setProfile] = useState({
@@ -65,7 +66,7 @@ function ProfileBuilder() {
   };
 
   return (
-    <div>
+    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
       <h2>Profile Builder</h2>
       <div className="panel">
         <div style={{ display: 'flex', gap: '1rem', marginBottom: '1rem' }}>
@@ -94,7 +95,7 @@ function ProfileBuilder() {
           </pre>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

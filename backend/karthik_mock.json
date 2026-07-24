@@ -1,0 +1,12 @@
+{
+  "source_type": "RESUME",
+  "skills": [
+    {"skill_name": "SQL", "category_code": "SQL", "confidence": "high"},
+    {"skill_name": "Python", "category_code": "COD", "confidence": "high"},
+    {"skill_name": "Data Analysis", "category_code": "SWE", "confidence": "high"},
+    {"skill_name": "A/B Testing", "category_code": "SWE", "confidence": "medium"},
+    {"skill_name": "Communication", "category_code": "COMM", "confidence": "high"},
+    {"skill_name": "Machine Learning", "category_code": "AI", "confidence": "medium"},
+    {"skill_name": "AWS", "category_code": "CLOUD", "confidence": "low"}
+  ]
+}

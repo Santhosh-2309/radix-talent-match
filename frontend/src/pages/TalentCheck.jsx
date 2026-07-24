@@ -1,47 +1,63 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { motion, animate } from 'framer-motion';
 
-function TalentCheck() {
-  const [profileId, setProfileId] = useState('');
-  const [company, setCompany] = useState('');
-  const [result, setResult] = useState(null);
+function ScoreRing({ targetScore }) {
+  const [score, setScore] = useState(0);
+  const radius = 90;
+  const circumference = 2 * Math.PI * radius;
+  const [offset, setOffset] = useState(circumference);
 
-  const handleCheck = async () => {
-    const res = await fetch('http://localhost:8000/api/talent/check-talent', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ profile_id: profileId, company_name: company })
+  useEffect(() => {
+    const controls = animate(0, targetScore, {
+      duration: 2,
+      ease: "easeOut",
+      onUpdate: (value) => {
+        setScore(Math.round(value));
+        const progress = value / 100;
+        setOffset(circumference - (progress * circumference));
+      }
     });
-    const data = await res.json();
-    setResult(data);
-  };
+    return () => controls.stop();
+  }, [targetScore, circumference]);
 
   return (
-    <div>
-      <h2>Talent Check</h2>
-      <div className="panel">
-        <input 
-          type="text" 
-          placeholder="Profile ID" 
-          value={profileId} 
-          onChange={(e) => setProfileId(e.target.value)} 
+    <div className="score-container">
+      <svg className="score-circle-svg">
+        <circle className="score-circle-bg" cx="100" cy="100" r={radius} />
+        <circle 
+          className="score-circle-path" 
+          cx="100" cy="100" r={radius} 
+          strokeDasharray={circumference}
+          strokeDashoffset={offset}
         />
-        <input 
-          type="text" 
-          placeholder="Target Company" 
-          value={company} 
-          onChange={(e) => setCompany(e.target.value)} 
-        />
-        <button onClick={handleCheck}>Run Check</button>
-        {result && (
-          <div style={{marginTop: '1rem'}}>
-            <h3>Result:</h3>
-            <pre style={{backgroundColor: '#111', padding: '1rem', borderRadius: '4px'}}>
-              {JSON.stringify(result, null, 2)}
-            </pre>
-          </div>
-        )}
+      </svg>
+      <div className="score-text">
+        {score}
+        <span className="score-label">Signal Str</span>
       </div>
     </div>
+  );
+}
+
+function TalentCheck() {
+  return (
+    <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="panel">
+      <span className="label-muted">Diagnostic Readout</span>
+      <h2>Talent Check</h2>
+      
+      <ScoreRing targetScore={85} />
+      
+      <div style={{ textAlign: 'center', color: 'var(--text-muted)' }}>
+        <p>Mock Signal Strength calculated based on JD and Profile match.</p>
+        <div style={{ marginTop: '2rem' }}>
+          <span className="pill pill-matched">Python</span>
+          <span className="pill pill-matched">React</span>
+          <span className="pill pill-matched">APIs</span>
+          <span className="pill pill-missing">Docker</span>
+          <span className="pill pill-missing">GraphQL</span>
+        </div>
+      </div>
+    </motion.div>
   );
 }
 

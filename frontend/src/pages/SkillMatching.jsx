@@ -1,47 +1,62 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { motion, animate } from 'framer-motion';
 
-function SkillMatching() {
-  const [profileId, setProfileId] = useState('');
-  const [jdId, setJdId] = useState('');
-  const [result, setResult] = useState(null);
+function ScoreRing({ targetScore }) {
+  const [score, setScore] = useState(0);
+  const radius = 90;
+  const circumference = 2 * Math.PI * radius;
+  const [offset, setOffset] = useState(circumference);
 
-  const handleMatch = async () => {
-    const res = await fetch('http://localhost:8000/api/skill/match-skills', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ profile_id: profileId, jd_id: jdId })
+  useEffect(() => {
+    const controls = animate(0, targetScore, {
+      duration: 2,
+      ease: "easeOut",
+      onUpdate: (value) => {
+        setScore(Math.round(value));
+        const progress = value / 100;
+        setOffset(circumference - (progress * circumference));
+      }
     });
-    const data = await res.json();
-    setResult(data);
-  };
+    return () => controls.stop();
+  }, [targetScore, circumference]);
 
   return (
-    <div>
-      <h2>Skill Matching</h2>
-      <div className="panel">
-        <input 
-          type="text" 
-          placeholder="Profile ID" 
-          value={profileId} 
-          onChange={(e) => setProfileId(e.target.value)} 
+    <div className="score-container">
+      <svg className="score-circle-svg">
+        <circle className="score-circle-bg" cx="100" cy="100" r={radius} />
+        <circle 
+          className="score-circle-path" 
+          cx="100" cy="100" r={radius} 
+          strokeDasharray={circumference}
+          strokeDashoffset={offset}
         />
-        <input 
-          type="text" 
-          placeholder="JD ID" 
-          value={jdId} 
-          onChange={(e) => setJdId(e.target.value)} 
-        />
-        <button onClick={handleMatch}>Run Match</button>
-        {result && (
-          <div style={{marginTop: '1rem'}}>
-            <h3>Match Result:</h3>
-            <pre style={{backgroundColor: '#111', padding: '1rem', borderRadius: '4px'}}>
-              {JSON.stringify(result, null, 2)}
-            </pre>
-          </div>
-        )}
+      </svg>
+      <div className="score-text">
+        {score}
+        <span className="score-label">Skill Match</span>
       </div>
     </div>
+  );
+}
+
+function SkillMatching() {
+  return (
+    <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="panel">
+      <span className="label-muted">Diagnostic Readout</span>
+      <h2>Skill Matching</h2>
+      
+      <ScoreRing targetScore={92} />
+      
+      <div style={{ textAlign: 'center', color: 'var(--text-muted)' }}>
+        <p>Mock Match Score calculated based on specific skill overlap.</p>
+        <div style={{ marginTop: '2rem' }}>
+          <span className="pill pill-matched">FastAPI</span>
+          <span className="pill pill-matched">Node.js</span>
+          <span className="pill pill-matched">AWS</span>
+          <span className="pill pill-missing">Kubernetes</span>
+        </div>
+      </div>
+    </motion.div>
   );
 }
 

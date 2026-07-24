@@ -1,29 +1,36 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 function ResumeParsing() {
-  const [text, setText] = useState('');
+  const [file, setFile] = useState(null);
   const [result, setResult] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const handleParse = async () => {
+    if (!file) return;
+    setLoading(true);
+    const formData = new FormData();
+    formData.append('file', file);
+
     const res = await fetch('http://localhost:8000/api/resume/parse-resume', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ resume_text: text })
+      body: formData
     });
     const data = await res.json();
     setResult(data);
+    setLoading(false);
   };
 
   return (
-    <div>
+    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
       <h2>Resume Parsing</h2>
       <div className="panel">
-        <textarea 
-          placeholder="Paste Resume here..." 
-          value={text} 
-          onChange={(e) => setText(e.target.value)} 
+        <input 
+          type="file" 
+          accept=".pdf,.docx" 
+          onChange={(e) => setFile(e.target.files[0])} 
         />
-        <button onClick={handleParse}>Parse Resume</button>
+        <button onClick={handleParse} disabled={loading}>{loading ? 'Parsing...' : 'Parse Resume'}</button>
         {result && (
           <div style={{marginTop: '1rem'}}>
             <h3>Extracted Skills:</h3>
@@ -33,7 +40,7 @@ function ResumeParsing() {
           </div>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }
 

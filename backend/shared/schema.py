@@ -17,10 +17,17 @@ class CandidateProfile(BaseModel):
     skills: List[Skill]
     experience_years: int
 
+class CategoryGap(BaseModel):
+    category: str
+    required: int
+    candidate: int
+    gap: bool
+
 class TalentCheckResult(BaseModel):
     score: float
     feedback: str
     passed: bool
+    breakdown: Optional[List[CategoryGap]] = []
 
 class SkillMatchResult(BaseModel):
     overall_score: float
