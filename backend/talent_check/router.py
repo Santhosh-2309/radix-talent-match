@@ -1,11 +1,16 @@
 from fastapi import APIRouter, HTTPException
 from shared.schema import TalentCheckInput, TalentCheckResult
 from profile_builder.storage import load_profile
-from .company_data import load_company_skillsets
+from .company_data import load_company_skillsets, load_all_companies
 from .scoring import calculate_readiness
 import os
 
 router = APIRouter()
+
+@router.get("/companies")
+def list_companies():
+    data = load_all_companies()
+    return sorted(list(data.keys()))
 
 @router.post("/check-talent", response_model=TalentCheckResult)
 def check_talent(data: TalentCheckInput):

@@ -47,6 +47,7 @@ function TalentCheck() {
   const [error, setError] = useState('');
   
   const [profiles, setProfiles] = useState([]);
+  const [companies, setCompanies] = useState([]);
 
   useEffect(() => {
     fetch('http://localhost:8000/api/profile/list')
@@ -54,6 +55,14 @@ function TalentCheck() {
       .then(data => {
         setProfiles(data);
         if (data.length > 0) setEmail(data[0]);
+      })
+      .catch(e => console.error(e));
+      
+    fetch('http://localhost:8000/api/talent/companies')
+      .then(res => res.json())
+      .then(data => {
+        setCompanies(data);
+        if (data.length > 0) setCompany(data[0]);
       })
       .catch(e => console.error(e));
   }, []);
@@ -115,9 +124,7 @@ function TalentCheck() {
           onChange={(e) => setCompany(e.target.value)} 
           style={{ flex: 1, minWidth: '250px' }}
         >
-          <option value="Google">Google</option>
-          <option value="Microsoft">Microsoft</option>
-          <option value="Oracle Financial Services Software">Oracle Financial Services Software</option>
+          {companies.map(c => <option key={c} value={c}>{c}</option>)}
         </select>
       </div>
       

@@ -15,3 +15,10 @@ def load_company_skillsets(company: str) -> dict:
         raise HTTPException(status_code=404, detail=f"Company {company} not found in skillsets.")
         
     return data[company]
+
+def load_all_companies() -> dict:
+    if not os.path.exists(DATA_FILE):
+        raise HTTPException(status_code=500, detail="Company skillsets file not found.")
+    
+    with open(DATA_FILE, "r") as f:
+        return json.load(f)
