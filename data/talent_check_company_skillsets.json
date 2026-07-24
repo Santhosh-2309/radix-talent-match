@@ -1,0 +1,53 @@
+[
+  {
+    "company_name": "Google",
+    "skillsets": {
+      "DSA": { "required_level": 9 },
+      "COD": { "required_level": 8 },
+      "OOD": { "required_level": 7 },
+      "APTI": { "required_level": 6 },
+      "COMM": { "required_level": 5 },
+      "AI": { "required_level": 8 },
+      "CLOUD": { "required_level": 7 },
+      "SQL": { "required_level": 5 },
+      "SWE": { "required_level": 8 },
+      "SYSD": { "required_level": 8 },
+      "NETW": { "required_level": 5 },
+      "OS": { "required_level": 6 }
+    }
+  },
+  {
+    "company_name": "Microsoft",
+    "skillsets": {
+      "DSA": { "required_level": 8 },
+      "COD": { "required_level": 8 },
+      "OOD": { "required_level": 7 },
+      "APTI": { "required_level": 6 },
+      "COMM": { "required_level": 6 },
+      "AI": { "required_level": 7 },
+      "CLOUD": { "required_level": 8 },
+      "SQL": { "required_level": 6 },
+      "SWE": { "required_level": 8 },
+      "SYSD": { "required_level": 7 },
+      "NETW": { "required_level": 6 },
+      "OS": { "required_level": 7 }
+    }
+  },
+  {
+    "company_name": "Oracle",
+    "skillsets": {
+      "DSA": { "required_level": 7 },
+      "COD": { "required_level": 7 },
+      "OOD": { "required_level": 6 },
+      "APTI": { "required_level": 5 },
+      "COMM": { "required_level": 5 },
+      "AI": { "required_level": 5 },
+      "CLOUD": { "required_level": 6 },
+      "SQL": { "required_level": 9 },
+      "SWE": { "required_level": 7 },
+      "SYSD": { "required_level": 6 },
+      "NETW": { "required_level": 6 },
+      "OS": { "required_level": 6 }
+    }
+  }
+]
