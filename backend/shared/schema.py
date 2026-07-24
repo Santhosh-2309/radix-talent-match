@@ -29,9 +29,13 @@ class TalentCheckResult(BaseModel):
     passed: bool
     breakdown: Optional[List[CategoryGap]] = []
 
+class MatchedSkill(BaseModel):
+    skill_name: str
+    match_type: str
+
 class SkillMatchResult(BaseModel):
     overall_score: float
-    matching_skills: List[str]
+    matching_skills: List[MatchedSkill]
     missing_skills: List[str]
     gap_analysis: str
 
